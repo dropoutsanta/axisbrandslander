@@ -354,9 +354,14 @@ export default function Home() {
             <div className="text-sm font-semibold text-foreground/70">
               © {new Date().getFullYear()} Axis Brands. All rights reserved.
             </div>
-            <div className="text-xs text-foreground/55">
-              Results shown are case-study outcomes and may vary by account.
-            </div>
+            <a
+              href="https://axisbrandsco.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-foreground/55 underline-offset-2 hover:underline"
+            >
+              Visit our website →
+            </a>
           </div>
         </Section>
       </footer>
