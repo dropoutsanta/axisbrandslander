@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Amazon Optimization Audit | Axis Brands",
   description:
     "Get a free Amazon audit + strategy call. Improve conversion, ROAS, listings, inventory, and brand control with a clear roadmap—backed by case studies.",
+  icons: {
+    icon: "/favicon.png",
+  },
   other: {
     "color-scheme": "light",
   },
