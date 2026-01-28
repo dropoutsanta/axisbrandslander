@@ -283,8 +283,8 @@ export default function Home() {
           <div className="flex flex-col gap-3">
             <h2 className="text-3xl font-extrabold tracking-tight">Case studies</h2>
             <p className="max-w-3xl text-lg leading-8 text-foreground/75">
-              Click to expand each case study. Each includes the headline results and the
-              strategy used to achieve them.
+              Real brands. Real growth. See how we&apos;ve helped companies scale revenue,
+              improve ROAS, and take back control of their Amazon presence.
             </p>
           </div>
 
