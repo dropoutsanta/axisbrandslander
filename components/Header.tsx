@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { CTAButton } from "@/components/CTAButton";
-import { CALENDLY_URL } from "@/lib/content";
+import { SCHEDULE_URL } from "@/lib/content";
 
 export function Header() {
   return (
@@ -20,7 +20,7 @@ export function Header() {
           >
             Case studies
           </a>
-          <CTAButton href={CALENDLY_URL} className="py-2">
+          <CTAButton href={SCHEDULE_URL} className="py-2">
             Book free audit
           </CTAButton>
         </div>

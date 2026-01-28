@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Amazon Optimization Audit | Axis Brands",
   description:
     "Get a free Amazon audit + strategy call. Improve conversion, ROAS, listings, inventory, and brand control with a clear roadmap—backed by case studies.",
+  other: {
+    "color-scheme": "light",
+  },
 };
 
 export default function RootLayout({
@@ -24,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" style={{ colorScheme: 'light' }}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

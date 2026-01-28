@@ -1,9 +1,10 @@
-export const CALENDLY_URL = "https://calendly.com/YOUR-CALENDLY-LINK";
+export const SCHEDULE_URL = "https://calendly.com/shawn-o6qx/become-a-best-selling-brand-on-amazon-clone";
 
 export type CaseStudy = {
   id: string;
   brandName: string;
   claim: string;
+  summary: string;
   pdfUrl: string;
   keyMetrics: { label: string; value: string }[];
   bullets: string[];
@@ -33,6 +34,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     brandName: "Barebells",
     claim:
       "Scaled from $3M/yr → $38M/yr in 24 months while improving ROAS 3.8 → 6.8 and securing 99% Buy Box.",
+    summary: "Barebells is a Swedish protein bar brand. Before Axis, they had gray-market sellers undercutting prices and inconsistent brand representation on Amazon. We established brand control, rebuilt their ad strategy, and upgraded creative—scaling them to $38M/yr with 99% Buy Box ownership.",
     pdfUrl: "/case-studies/barebells.pdf",
     keyMetrics: [
       { label: "Revenue (24 months)", value: "$3M/yr → $38M/yr" },
@@ -52,6 +54,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     brandName: "I'M A Nut",
     claim:
       "Grew from $200K/mo → $700K/mo in 9 months while improving ROAS 4.0 → 9.1 and securing 98% Buy Box.",
+    summary: "I'M A Nut sells premium nuts and dried fruits. They were stuck at $200K/mo with unauthorized sellers hurting their margins. We removed the unauthorized sellers, optimized their ad structure, and improved creative—growing them to $700K/mo in 9 months.",
     pdfUrl: "/case-studies/im-a-nut.pdf",
     keyMetrics: [
       { label: "Revenue (9 months)", value: "$200K/mo → $700K/mo" },
@@ -71,6 +74,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     brandName: "Molly Suds",
     claim:
       "Grew from $24M → $55M in 24 months while improving ROAS 4.1 → 9.4 and lifting conversion +25–35%.",
+    summary: "Molly Suds makes natural laundry products. Unauthorized sellers were eroding their pricing and brand experience. We enrolled them in Amazon Transparency, removed unauthorized sellers, and built the ops structure to scale—growing them from $24M to $55M.",
     pdfUrl: "/case-studies/molly-suds.pdf",
     keyMetrics: [
       { label: "Revenue (24 months)", value: "$24M → $55M" },
@@ -89,6 +93,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     brandName: "Airnex",
     claim:
       "Grew from $3M → $5M in 18 months while improving ROAS 4.8 → 6.4 and lifting conversion +40–50%.",
+    summary: "Airnex sells home and kitchen products. They had unauthorized sellers and underperforming listings. We cleaned up the catalog, rebuilt their listings with better copy and infographics, and managed PPC—growing them from $3M to $5M with 40-50% better conversion.",
     pdfUrl: "/case-studies/airnex.pdf",
     keyMetrics: [
       { label: "Revenue (18 months)", value: "$3M → $5M" },
@@ -106,13 +111,14 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: "spartan",
     brandName: "Spartan Bee Bread",
     claim:
-      "Launched from $0 → $1.5M/yr in 10 months while improving ROAS 3.2 → 6.5 (+40% conversion) and earning Amazon’s Choice.",
+      "Launched from $0 → $1.5M/yr in 10 months while improving ROAS 3.2 → 6.5 (+40% conversion) and earning Amazon's Choice.",
+    summary: "Spartan Bee Bread is a superfood supplement brand. They were launching on Amazon from zero. We built their brand presence from scratch, optimized listings, ran profitable PPC, and got them to $1.5M/yr with Amazon's Choice in 10 months.",
     pdfUrl: "/case-studies/spartan.pdf",
     keyMetrics: [
       { label: "Revenue (10 months)", value: "$0 → $1.5M/yr" },
       { label: "Conversion rate", value: "+40%" },
       { label: "ROAS", value: "3.2 → 6.5" },
-      { label: "Category traction", value: "Amazon’s Choice" },
+      { label: "Category traction", value: "Amazon's Choice" },
     ],
     bullets: [
       "Built brand presence and category credibility from scratch.",
@@ -126,6 +132,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     brandName: "Branch Basics",
     claim:
       "Grew from $100K → $1M in 14 months while improving ROAS 3.3 → 5.6 and lifting conversion +25–50%.",
+    summary: "Branch Basics makes non-toxic cleaning products. They had unauthorized sellers creating confusion and eroding their brand. We removed unauthorized sellers, rebuilt their listings, and centralized the customer experience—growing them from $100K to $1M.",
     pdfUrl: "/case-studies/branch.pdf",
     keyMetrics: [
       { label: "Revenue (14 months)", value: "$100K → $1M" },
@@ -143,31 +150,35 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const PACKAGE_SCOPE = [
   {
-    title: "Listing optimization",
-    desc: "Keyword strategy, PDP structure, and conversion-first copy so your traffic actually converts.",
+    title: "PPC & DSP Advertising",
+    desc: "Lower ACoS and higher ROI with expertly managed campaigns. Structure, targeting, bids, and negatives built to scale.",
   },
   {
-    title: "PPC optimization",
-    desc: "Account structure + targeting + bids + negatives—built to scale profitably, not just spend.",
+    title: "SEO & Listing Optimization",
+    desc: "A+ Content, high-converting imagery, and enhanced brand storytelling. Titles, bullets, and descriptions that rank and convert.",
   },
   {
-    title: "Creative assets",
-    desc: "High-converting images + A+ content guidance that lifts CVR and supports premium positioning.",
+    title: "Creative Services",
+    desc: "Product photography, infographics, and A+ modules designed to turn browsers into buyers.",
   },
   {
-    title: "Inventory + logistics",
-    desc: "Forecasting, replenishment cadence, and fulfillment planning to reduce stockouts and missed revenue.",
+    title: "Brand Protection & MAP",
+    desc: "Removal of unauthorized resellers, MAP enforcement, and catalog cleanup. We've removed 84+ sellers for a single brand.",
   },
   {
-    title: "Brand protection",
-    desc: "Unauthorized seller cleanup and brand control strategies (where applicable) to defend pricing and CX.",
+    title: "Logistics & Fulfillment",
+    desc: "Inventory purchasing, demand forecasting, DTC fulfillment, and Amazon-compliant prep. No more stockouts.",
+  },
+  {
+    title: "Insights & Analytics",
+    desc: "Weekly performance reports, data-driven strategy refinement, and clear metrics to track progress.",
   },
 ];
 
 export const FAQ = [
   {
     q: "Who is this for?",
-    a: "Amazon brands that already have traction but know they’re leaving money on the table—conversion, ads efficiency, rank, or operational bottlenecks.",
+    a: "Amazon brands that already have traction but know they're leaving money on the table—conversion, ads efficiency, rank, or operational bottlenecks.",
   },
   {
     q: "What happens on the audit + strategy call?",
@@ -175,11 +186,10 @@ export const FAQ = [
   },
   {
     q: "Do you work with brands with unauthorized sellers?",
-    a: "Yes—when it’s relevant, we’ll outline a plan to regain control and reduce buy-box leakage. The specific steps depend on your brand registry status and current channel setup.",
+    a: "Yes—when it's relevant, we'll outline a plan to regain control and reduce buy-box leakage. The specific steps depend on your brand registry status and current channel setup.",
   },
   {
     q: "Is this a one-time package or ongoing?",
-    a: "This landing page is focused on a free audit + strategy call. If there’s a fit, we’ll recommend the best path forward (one-time optimization, ongoing management, or a hybrid).",
+    a: "This landing page is focused on a free audit + strategy call. If there's a fit, we'll recommend the best path forward (one-time optimization, ongoing management, or a hybrid).",
   },
 ];
-

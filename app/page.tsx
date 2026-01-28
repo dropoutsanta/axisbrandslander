@@ -4,9 +4,60 @@ import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
 import { StatTile } from "@/components/StatTile";
-import { CaseStudyDrawer } from "@/components/CaseStudyDrawer";
+import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { CALENDLY_URL, CASE_STUDIES, FAQ, PACKAGE_SCOPE, TOP_STATS } from "@/lib/content";
+import { SCHEDULE_URL, CASE_STUDIES, FAQ, PACKAGE_SCOPE, TOP_STATS } from "@/lib/content";
+
+// Helper function to find case study by brand name
+function findCaseStudyByBrandName(brandName: string) {
+  return CASE_STUDIES.find(
+    (cs) => cs.brandName.toLowerCase() === brandName.toLowerCase()
+  );
+}
+
+// Helper function to extract brand name from sub text
+function extractBrandName(sub: string): { brandName: string; rest: string } | null {
+  const match = sub.match(/\(([^)]+)\)/);
+  if (match) {
+    return {
+      brandName: match[1],
+      rest: sub.replace(match[0], "").trim(),
+    };
+  }
+  // If no parentheses, check if the whole thing is a brand name
+  const caseStudy = findCaseStudyByBrandName(sub);
+  if (caseStudy) {
+    return { brandName: sub, rest: "" };
+  }
+  return null;
+}
+
+// Component to render stat sub text with clickable brand name
+function StatSubText({ sub }: { sub: string }) {
+  const extracted = extractBrandName(sub);
+  if (!extracted) {
+    return <div className="mt-1 text-xs text-foreground/60">{sub}</div>;
+  }
+
+  const caseStudy = findCaseStudyByBrandName(extracted.brandName);
+  const brandLink = caseStudy ? `#case-studies` : undefined;
+
+  return (
+    <div className="mt-1 text-xs text-foreground/60">
+      {extracted.rest && <span>{extracted.rest} </span>}
+      {brandLink ? (
+        <a
+          href={brandLink}
+          className="font-semibold text-brand-blue underline underline-offset-2 hover:text-brand-blue/80 transition-colors"
+        >
+          {extracted.brandName}
+        </a>
+      ) : (
+        <span className="font-semibold">{extracted.brandName}</span>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -24,11 +75,7 @@ export default function Home() {
 
           <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2 text-xs font-semibold text-foreground/70 ring-1 ring-border">
-                Amazon optimization audit + strategy call
-              </div>
-
-              <h1 className="mt-5 text-4xl font-extrabold tracking-tight sm:text-5xl">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                 Turn your Amazon store into a
                 <span className="text-brand-blue"> predictable growth engine</span>
                 —without guessing.
@@ -45,7 +92,7 @@ export default function Home() {
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-blue" />
                   <span>
                     A prioritized roadmap for listings, ads, creative, inventory, and
-                    brand protection.
+                    brand margins.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -64,7 +111,7 @@ export default function Home() {
               </ul>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <CTAButton href={CALENDLY_URL} className="w-full sm:w-auto">
+                <CTAButton href={SCHEDULE_URL} className="w-full sm:w-auto">
                   Book your free audit
                 </CTAButton>
                 <CTAButton
@@ -75,116 +122,109 @@ export default function Home() {
                   See proof & case studies
                 </CTAButton>
               </div>
-
-              <div className="mt-6 text-xs text-foreground/60">
-                No VSL. No fluff. Just a concrete plan you can execute.
-              </div>
             </div>
 
-            <div className="rounded-[var(--radius-lg)] border border-border bg-card p-5 shadow-soft sm:p-6">
-              <div className="flex items-center justify-between gap-3">
-                <div className="text-sm font-extrabold">Proof from real accounts</div>
-                <span className="rounded-full bg-amazon-orange/10 px-3 py-1 text-xs font-semibold text-amazon-orange">
-                  Amazon-first
-                </span>
-              </div>
-
-              <div className="mt-4 grid gap-4">
-                <div className="flex items-center justify-center rounded-2xl bg-muted p-5 ring-1 ring-border">
-                  <img
-                    src="/amazon-logo-white-hd.png"
-                    alt="Amazon"
-                    className="h-20 w-auto object-contain"
-                  />
-                </div>
-                <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                  <StatTile
-                    label={TOP_STATS[0].label}
-                    value={TOP_STATS[0].value}
-                    sub={TOP_STATS[0].sub}
-                    accent="blue"
-                  />
-                  <StatTile
-                    label={TOP_STATS[1].label}
-                    value={TOP_STATS[1].value}
-                    sub={TOP_STATS[1].sub}
-                    accent="orange"
-                  />
-                  <StatTile
-                    label={TOP_STATS[2].label}
-                    value={TOP_STATS[2].value}
-                    sub={TOP_STATS[2].sub}
-                    accent="blue"
-                  />
+            <div className="flex flex-col items-center">
+              <img
+                src="/amazon-logo-black.png"
+                alt="Amazon"
+                className="h-32 w-auto object-contain mb-8"
+              />
+              <div className="rounded-[var(--radius-lg)] border border-border bg-card p-5 shadow-soft sm:p-6 w-full">
+                <div className="w-full space-y-8">
+                  <div className="text-center">
+                    <div className="text-4xl font-extrabold tracking-tight text-foreground">
+                      {TOP_STATS[0].value}
+                    </div>
+                    <div className="mt-2 text-sm font-medium text-foreground/70">
+                      {TOP_STATS[0].label}
+                    </div>
+                    <StatSubText sub={TOP_STATS[0].sub} />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-extrabold tracking-tight text-foreground">
+                      {TOP_STATS[1].value}
+                    </div>
+                    <div className="mt-2 text-sm font-medium text-foreground/70">
+                      {TOP_STATS[1].label}
+                    </div>
+                    <StatSubText sub={TOP_STATS[1].sub} />
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-extrabold tracking-tight text-foreground">
+                      {TOP_STATS[2].value}
+                    </div>
+                    <div className="mt-2 text-sm font-medium text-foreground/70">
+                      {TOP_STATS[2].label}
+                    </div>
+                    <StatSubText sub={TOP_STATS[2].sub} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </Section>
 
-        {/* PROBLEM */}
+        {/* BEFORE / AFTER */}
         <Section className="py-14 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <h2 className="text-3xl font-extrabold tracking-tight">
-                Most Amazon brands aren’t stuck because of effort.
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-foreground/75">
-                They’re stuck because the next level requires the right sequence:
-                conversion first, then paid efficiency, then operational leverage and
-                protection.
-              </p>
-              <div className="mt-7 rounded-[var(--radius-lg)] bg-muted p-6 ring-1 ring-border">
-                <div className="text-sm font-extrabold">Common bottlenecks</div>
-                <ul className="mt-4 space-y-2 text-sm leading-6 text-foreground/75">
-                  <li>Low conversion from weak creative, copy, or offer framing</li>
-                  <li>PPC that spends but doesn’t scale profitably</li>
-                  <li>Inventory & fulfillment causing stockouts and rank loss</li>
-                  <li>Unauthorized sellers siphoning buy box and margin</li>
-                  <li>“Random acts of optimization” with no roadmap</li>
-                </ul>
-              </div>
-            </div>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-extrabold tracking-tight">
+              Your product got you here. It won't get you to 8 figures.
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg leading-8 text-foreground/75">
+              Most brands hit a ceiling. The ones that break through have a system—not just hustle.
+            </p>
+          </div>
 
-            <div className="rounded-[var(--radius-lg)] border border-border bg-card p-6 shadow-soft">
-              <div className="text-sm font-extrabold">What you get on the call</div>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-foreground/75">
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
-                  <span>
-                    A snapshot of your conversion levers: title, images, A+, reviews,
-                    and positioning.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
-                  <span>
-                    PPC diagnosis: where efficiency is leaking and what to restructure.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
-                  <span>
-                    A prioritized roadmap: next 7 days, next 30 days, next 90 days.
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-orange" />
-                  <span>
-                    Brand control & ops notes: buy box leaks, forecasting, and fulfillment risks.
-                  </span>
-                </li>
+          <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+            {/* BEFORE */}
+            <div className="rounded-[var(--radius-lg)] border border-border bg-card p-6 sm:p-8">
+              <div className="text-sm font-extrabold mb-5">Before</div>
+              <ul className="space-y-3 text-sm leading-6 text-foreground/75">
+                <li>High logistics costs eating into margins</li>
+                <li>Unauthorized resellers undercutting your prices</li>
+                <li>Ad spend going up, ROAS going down</li>
+                <li>Limited product visibility despite good reviews</li>
+                <li>No clear data on what's actually working</li>
+                <li>Doing PPC, creative, logistics, and brand protection yourself</li>
               </ul>
+            </div>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <CTAButton href={CALENDLY_URL} className="w-full sm:w-auto">
-                  Book free audit
-                </CTAButton>
-                <CTAButton href="#package" variant="secondary" className="w-full sm:w-auto">
-                  What we optimize
-                </CTAButton>
+            {/* AFTER */}
+            <div className="rounded-[var(--radius-lg)] border border-border bg-card p-6 sm:p-8">
+              <div className="text-sm font-extrabold mb-5">After</div>
+              <ul className="space-y-3 text-sm leading-6 text-foreground/75">
+                <li>35% average brand growth in 6 months</li>
+                <li>Unauthorized sellers removed (84 removed for one brand alone)</li>
+                <li>Lower ACoS with expertly managed PPC and DSP</li>
+                <li>Optimized listings that turn browsers into buyers</li>
+                <li>Weekly performance reports with clear metrics</li>
+                <li>Full-service team: ads, creative, logistics, brand protection, SEO</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-[var(--radius-lg)] bg-muted p-5 ring-1 ring-border">
+            <div className="grid gap-6 text-center sm:grid-cols-3">
+              <div>
+                <div className="text-2xl font-extrabold">$100M+</div>
+                <div className="mt-1 text-xs text-foreground/60">Sales generated for partners</div>
+              </div>
+              <div>
+                <div className="text-2xl font-extrabold">99%</div>
+                <div className="mt-1 text-xs text-foreground/60">Client retention rate</div>
+              </div>
+              <div>
+                <div className="text-2xl font-extrabold">50+</div>
+                <div className="mt-1 text-xs text-foreground/60">Partnered brands</div>
               </div>
             </div>
+          </div>
+
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <CTAButton href={SCHEDULE_URL} className="w-full sm:w-auto">
+              Book your free audit
+            </CTAButton>
           </div>
         </Section>
 
@@ -195,8 +235,7 @@ export default function Home() {
               What we optimize (the stuff that actually moves the needle)
             </h2>
             <p className="max-w-3xl text-lg leading-8 text-foreground/75">
-              We focus on the levers that compound: conversion → ads efficiency →
-              operational scale → brand control.
+              From protecting your brand and optimizing listings to executing high-performance advertising and streamlining logistics—we handle every step.
             </p>
           </div>
 
@@ -229,17 +268,10 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
                 <CTAButton
-                  href={CALENDLY_URL}
+                  href={SCHEDULE_URL}
                   className="bg-white text-brand-blue hover:brightness-105"
                 >
-                  Schedule on Calendly
-                </CTAButton>
-                <CTAButton
-                  href="#case-studies"
-                  variant="secondary"
-                  className="border-white/25 bg-white/10 text-white hover:bg-white/15"
-                >
-                  See case studies
+                  Schedule a call
                 </CTAButton>
               </div>
             </div>
@@ -251,14 +283,14 @@ export default function Home() {
           <div className="flex flex-col gap-3">
             <h2 className="text-3xl font-extrabold tracking-tight">Case studies</h2>
             <p className="max-w-3xl text-lg leading-8 text-foreground/75">
-              Preview the full PDFs inline. Each drawer includes the headline results and the
+              Click to expand each case study. Each includes the headline results and the
               strategy used to achieve them.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="mt-8 flex flex-col gap-4">
             {CASE_STUDIES.map((cs) => (
-              <CaseStudyDrawer key={cs.id} caseStudy={cs} />
+              <CaseStudyCard key={cs.id} caseStudy={cs} />
             ))}
           </div>
 
@@ -271,7 +303,7 @@ export default function Home() {
                 Start with a free audit + strategy call.
               </div>
             </div>
-            <CTAButton href={CALENDLY_URL} className="w-full sm:w-auto">
+            <CTAButton href={SCHEDULE_URL} className="w-full sm:w-auto">
               Book free audit
             </CTAButton>
           </div>
@@ -307,12 +339,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-3 lg:items-end">
-                <CTAButton href={CALENDLY_URL} className="w-full sm:w-auto">
+                <CTAButton href={SCHEDULE_URL} className="w-full sm:w-auto">
                   Book free audit
                 </CTAButton>
-                <div className="text-xs text-foreground/60">
-                  Calendly link is currently a placeholder.
-                </div>
               </div>
             </div>
           </div>
