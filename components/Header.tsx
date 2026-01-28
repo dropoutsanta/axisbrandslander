@@ -8,9 +8,9 @@ export function Header() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
         <a href="#top" className="flex items-center gap-3">
           <img
-            src="/axis-brands-logo.png"
+            src="/axis-brands-logo.svg"
             alt="Axis Brands"
-            className="h-8 w-auto"
+            className="h-12 w-auto"
           />
         </a>
         <div className="flex items-center gap-2">
