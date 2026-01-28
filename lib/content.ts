@@ -178,18 +178,34 @@ export const PACKAGE_SCOPE = [
 export const FAQ = [
   {
     q: "Who is this for?",
-    a: "Amazon brands that already have traction but know they're leaving money on the table—conversion, ads efficiency, rank, or operational bottlenecks.",
+    a: "Amazon brands that already have traction but know they're leaving money on the table—conversion, ads efficiency, rank, or operational bottlenecks. Axis works with brands doing $100K+ annually, from emerging DTC brands to global names like Sig Sauer, illy, Ghirardelli, and Castrol.",
+  },
+  {
+    q: "What makes Axis different from other Amazon agencies?",
+    a: "Axis is a Top 300 Amazon Seller (out of 2M+ sellers) with $100M+ in sales generated for partners. Unlike agencies that just advise, Axis buys your inventory upfront and operates on margin—meaning they only win when you win. Plus, 99% of their clients stay with them long-term.",
   },
   {
     q: "What happens on the audit + strategy call?",
-    a: "We review your listings, ads, and operational constraints, then give you a clear priority roadmap (what to fix first, what to ignore, and what will move the needle fastest).",
+    a: "You'll receive a free video audit with data-driven analysis of your current Amazon performance. We review your listings, ads, and operational constraints, then give you a clear priority roadmap (what to fix first, what to ignore, and what will move the needle fastest).",
+  },
+  {
+    q: "How does pricing work?",
+    a: "No hidden fees—Axis offers full-service support without additional costs. They forecast demand, purchase inventory upfront, and operate on margin. This shared-risk model means their success is directly tied to yours.",
   },
   {
     q: "Do you work with brands with unauthorized sellers?",
-    a: "Yes—when it's relevant, we'll outline a plan to regain control and reduce buy-box leakage. The specific steps depend on your brand registry status and current channel setup.",
+    a: "Yes—brand protection is a core specialty. Axis has removed 84+ unauthorized resellers for a single brand (Taramps) and uses legal enforcement, MAP compliance, and Amazon Transparency enrollment to protect your pricing and Buy Box ownership.",
+  },
+  {
+    q: "What kind of results can I expect?",
+    a: "Results vary, but Axis has driven 35% average brand growth in the last 6 months across their portfolio. Examples: Taramps grew from $3.4M to $9.6M/yr in 12 months; one client saw 48% sales increase within 3 months.",
+  },
+  {
+    q: "Do you only focus on my best-selling products?",
+    a: "No—Axis takes a holistic approach, stocking, promoting, and optimizing your entire product line. They leverage traffic from your best-sellers to drive growth across all SKUs, ensuring every product gets attention.",
   },
   {
     q: "Is this a one-time package or ongoing?",
-    a: "This landing page is focused on a free audit + strategy call. If there's a fit, we'll recommend the best path forward (one-time optimization, ongoing management, or a hybrid).",
+    a: "This landing page is focused on a free audit + strategy call. If there's a fit, we'll recommend the best path forward (one-time optimization, ongoing management, or a hybrid). Axis is built for long-term partnerships, dedicating time, resources, and capital to your brand's growth.",
   },
 ];
