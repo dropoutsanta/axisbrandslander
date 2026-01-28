@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   description:
     "Get a free Amazon audit + strategy call. Improve conversion, ROAS, listings, inventory, and brand control with a clear roadmap—backed by case studies.",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
   },
   other: {
     "color-scheme": "light",
