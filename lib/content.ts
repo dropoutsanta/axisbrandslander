@@ -1,4 +1,5 @@
-export const SCHEDULE_URL = "https://calendly.com/shawn-o6qx/become-a-best-selling-brand-on-amazon-clone";
+export const SCHEDULE_URL =
+  "https://calendly.com/shawn-o6qx/strategy-session?month=2026-02";
 
 export type CaseStudy = {
   id: string;

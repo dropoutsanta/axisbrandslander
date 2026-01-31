@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import * as Dialog from "@radix-ui/react-dialog";
 import { cn } from "@/lib/cn";
 import type { CaseStudy } from "@/lib/content";

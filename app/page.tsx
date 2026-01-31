@@ -3,7 +3,6 @@
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
 import { CTAButton } from "@/components/CTAButton";
-import { StatTile } from "@/components/StatTile";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SCHEDULE_URL, CASE_STUDIES, FAQ, PACKAGE_SCOPE, TOP_STATS } from "@/lib/content";
@@ -169,7 +168,7 @@ export default function Home() {
         <Section className="py-14 sm:py-20">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold tracking-tight">
-              Your product got you here. It won't get you to 8 figures.
+              Your product got you here. It won&apos;t get you to 8 figures.
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg leading-8 text-foreground/75">
               Most brands hit a ceiling. The ones that break through have a system—not just hustle.
@@ -185,7 +184,7 @@ export default function Home() {
                 <li>Unauthorized resellers undercutting your prices</li>
                 <li>Ad spend going up, ROAS going down</li>
                 <li>Limited product visibility despite good reviews</li>
-                <li>No clear data on what's actually working</li>
+                <li>No clear data on what&apos;s actually working</li>
                 <li>Doing PPC, creative, logistics, and brand protection yourself</li>
               </ul>
             </div>
